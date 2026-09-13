@@ -32,6 +32,14 @@ export async function PlatformsSection(): Promise<JSX.Element> {
             </Reveal>
           ))}
         </ul>
+        <Reveal index={PLATFORMS.length}>
+          <p className="text-text-lo prose-cjk mt-6 max-w-2xl text-sm leading-[1.6]">
+            <sup aria-hidden="true" className="text-accent mr-1">
+              *
+            </sup>
+            {t("platforms.footnote")}
+          </p>
+        </Reveal>
       </Frame>
     </section>
   )

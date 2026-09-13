@@ -93,8 +93,8 @@ test.describe("Landing Page", () => {
     const names = await list.locator("li").allInnerTexts()
 
     // then
-    expect(names).toHaveLength(12)
-    expect(new Set(names.map((n) => n.trim())).size).toBe(12)
+    expect(names).toHaveLength(13)
+    expect(new Set(names.map((n) => n.trim())).size).toBe(13)
   })
 
   test("keeps the story readable under reduced motion", async ({ page }) => {

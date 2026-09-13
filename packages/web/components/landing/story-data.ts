@@ -11,6 +11,7 @@ export const PLATFORMS = [
   "Instagram",
   "KakaoTalk",
   "Channel Talk",
+  "Lark",
 ] as const
 
 export const MODEL_PROFILES = [

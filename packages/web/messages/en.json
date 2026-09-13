@@ -116,7 +116,8 @@
     },
     "platforms": {
       "titlePrefix": "And from your",
-      "body": "Talk to your agent where you already are. It messages as you, not as a bot, on every platform you use."
+      "body": "Talk to your agent where you already are. It messages as you, not as a bot, on every platform you use.",
+      "footnote": "Coming soon. Messaging platforms are being wired in one by one."
     },
     "reviews": {
       "eyebrow": "From users",

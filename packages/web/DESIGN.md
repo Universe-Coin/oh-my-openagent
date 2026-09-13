@@ -295,7 +295,7 @@ The GitHub one-liner calls the user "the master of graph engineering". The focal
 - **kibitzer**: a two-column stage; the sidecar column reads memory, the main column steps through a plan; `.kib-step` cycles four steps over 9s, `.kib-nudge` shows the nudge chip during step 2.
 - **skills**: a vertical `Ticker` of `name · blurb` rows (30s, pause on hover) next to the copy.
 - **crafted**: sticky copy column + a single-column rise-up list (`Reveal` with `--index` stagger); the docs link is the only CTA.
-- **platforms**: title with a `RotatingWord` (12 platforms, 1.6s per word, `steps()`), then every platform once as a `Chip`, revealed with stagger.
+- **platforms**: title with a `RotatingWord` (13 platforms, 1.6s per word, `steps()`), then every platform once as a `Chip`, revealed with stagger, and a footnote-style "coming soon" line under the list.
 
 ### §10 primitives (`components/landing/story-primitives.tsx`, `lit-text.tsx`; CSS in `design-system.css` §10)
 
