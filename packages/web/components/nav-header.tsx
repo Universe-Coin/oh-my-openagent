@@ -16,16 +16,16 @@ import { cn } from "@/lib/utils"
 const GITHUB_URL = "https://github.com/code-yeongyu/oh-my-openagent"
 const SCROLL_THRESHOLD = 24
 
-type NavLinkKey = "agents" | "docs" | "manifesto"
+type NavLinkKey = "features" | "docs" | "manifesto"
 
 interface NavItem {
   readonly key: NavLinkKey
-  readonly href: "/#agents" | "/docs" | "/manifesto"
+  readonly href: "/#features" | "/docs" | "/manifesto"
   readonly isActive: (pathname: string) => boolean
 }
 
 const NAV_ITEMS: readonly NavItem[] = [
-  { key: "agents", href: "/#agents", isActive: () => false },
+  { key: "features", href: "/#features", isActive: () => false },
   { key: "docs", href: "/docs", isActive: (p) => p.startsWith("/docs") },
   { key: "manifesto", href: "/manifesto", isActive: (p) => p.startsWith("/manifesto") },
 ]

@@ -1,23 +1,18 @@
 import { test, expect } from "@playwright/test"
 
-test.describe("Hero Stats", () => {
-  test("renders the GitHub description as the hero tagline", async ({ page, request }) => {
-    // given
-    const stats: unknown = await (await request.get("/api/stats")).json()
-    const description =
-      typeof stats === "object" && stats !== null && "description" in stats
-        ? stats.description
-        : undefined
-    expect(typeof description).toBe("string")
+import en from "../messages/en.json" with { type: "json" }
 
-    // when
+test.describe("Hero Stats", () => {
+  test("renders the shipped sub-copy as the hero tagline", async ({ page }) => {
+    // given
     await page.goto("/")
 
-    // then
+    // when
     const tagline = page.getByTestId("hero-tagline")
+
+    // then
     await expect(tagline).toBeVisible()
-    await expect(tagline).toHaveText(/\S/)
-    await expect(tagline).toHaveText(String(description))
+    await expect(tagline).toHaveText(en.landing.hero.subcopy)
   })
 
   test("renders the agent count in the proof strip", async ({ page }) => {
