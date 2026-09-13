@@ -33,7 +33,7 @@
     "hero": {
       "title": "Your tool for real work.",
       "titleHighlight": "But it's an agent.",
-      "subcopy": "Turn your tokens into results that matter in the real world. Research that needs ten thousand sources, a clean deck people actually understand, company work that spans a dozen contexts, experiments, backends, frontends, code. Whatever you need done.",
+      "subcopy": "Turn your tokens into results that matter.\nResearch across ten thousand sources. A deck people actually get.\nCompany work, experiments, backends, frontends, code.\nWhatever you need done.",
       "getStarted": "Get started",
       "readManifesto": "Read the manifesto",
       "installLabel": "One command, one tool",
