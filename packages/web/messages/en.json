@@ -48,9 +48,7 @@
       "label": "Live numbers",
       "githubStars": "GitHub Stars",
       "totalDownloads": "Total Downloads",
-      "monthlyDownloads": "Monthly Downloads",
-      "agents": "agents",
-      "agentCount": "11"
+      "monthlyDownloads": "Monthly Downloads"
     },
     "secret": {
       "lead": "We'd rather you never had to read what's below.",
@@ -145,9 +143,9 @@
     },
     "dag": {
       "region": "OmO desktop with the workflow graph open",
-      "windowTitle": "OmO — market research, 12,000 sources",
+      "windowTitle": "OmO — market research, 12k sources",
       "threads": "Threads",
-      "thread1": "market research, 12,000 sources",
+      "thread1": "market research, 12k sources",
       "thread2": "train the ranking model",
       "thread3": "ship the investor deck",
       "workflow": "Workflow",

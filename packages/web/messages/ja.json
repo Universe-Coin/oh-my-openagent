@@ -48,9 +48,7 @@
       "label": "ライブ指標",
       "githubStars": "GitHub スター",
       "totalDownloads": "累計ダウンロード",
-      "monthlyDownloads": "月間ダウンロード",
-      "agents": "エージェント",
-      "agentCount": "11"
+      "monthlyDownloads": "月間ダウンロード"
     },
     "secret": {
       "lead": "この先の内容は、知らないままでいてほしいと思っています。",
@@ -145,9 +143,9 @@
     },
     "dag": {
       "region": "ワークフローグラフを開いた OmO デスクトップ",
-      "windowTitle": "OmO — 市場調査、ソース12,000件",
+      "windowTitle": "OmO — 市場調査 12k ソース",
       "threads": "スレッド",
-      "thread1": "市場調査、ソース12,000件",
+      "thread1": "市場調査 12k ソース",
       "thread2": "ランキングモデルの学習",
       "thread3": "投資家向け資料を仕上げる",
       "workflow": "ワークフロー",

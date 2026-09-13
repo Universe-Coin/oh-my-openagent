@@ -15,14 +15,6 @@ test.describe("Hero Stats", () => {
     await expect(tagline).toHaveText(en.landing.hero.subcopy)
   })
 
-  test("renders the agent count in the proof strip", async ({ page }) => {
-    // given / when
-    await page.goto("/")
-
-    // then
-    await expect(page.getByTestId("proof-strip").getByText(/^11 agents$/)).toBeVisible()
-  })
-
   test("serves a generated Open Graph image", async ({ request }) => {
     // given / when
     const response = await request.get("/opengraph-image")

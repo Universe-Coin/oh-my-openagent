@@ -70,7 +70,7 @@ export function NavHeader({ stars }: NavHeaderProps): JSX.Element {
       <div className="mx-auto flex h-[60px] w-full max-w-[90rem] items-center justify-between px-4 sm:px-5 lg:px-8">
         <Link
           href="/"
-          className="focus-visible:outline-accent-32 flex items-center gap-2.5 rounded-[2px] focus-visible:outline-2 focus-visible:outline-offset-2"
+          className="focus-visible:outline-accent-32 flex min-h-11 items-center gap-2.5 rounded-[2px] focus-visible:outline-2 focus-visible:outline-offset-2"
         >
           <Image src="/brand/omo-mark.svg" alt="" width={24} height={24} priority />
           <span className="text-text-hi text-[15px] font-medium tracking-[-0.02em]">
@@ -103,7 +103,7 @@ export function NavHeader({ stars }: NavHeaderProps): JSX.Element {
             target="_blank"
             rel="noopener noreferrer"
             aria-label={t("githubStars", { count: live.stars })}
-            className="focus-visible:outline-accent-32 rounded-[2px] focus-visible:outline-2 focus-visible:outline-offset-2"
+            className="focus-visible:outline-accent-32 inline-flex min-h-11 items-center rounded-[2px] focus-visible:outline-2 focus-visible:outline-offset-2"
           >
             <Chip className="bg-ink-1 hover:border-line-strong hover:text-text-hi">
               <GithubIcon className="size-3.5" />
@@ -152,7 +152,7 @@ export function NavHeader({ stars }: NavHeaderProps): JSX.Element {
               </li>
             ))}
             <li className="p-3">
-              <Button size="sm" className="w-full" asChild>
+              <Button size="md" className="w-full" asChild>
                 <Link
                   href="/docs#installation"
                   tabIndex={isOpen ? undefined : -1}

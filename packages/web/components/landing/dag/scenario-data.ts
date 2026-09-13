@@ -1,7 +1,7 @@
 import type { DagNodeSpec, DagState, DagWave } from "./types"
 
 export const RUN_NAME = "market research, 12,000 sources"
-export const USER_COMMAND = "mass ulw research the market: 12,000 sources, a ranking model, a deck"
+export const USER_COMMAND = "mass ulw 12k sources → ranking model → deck"
 
 /**
  * One realistic mass-ulw run: 10 nodes over 5 waves. Models are spread on purpose — at any

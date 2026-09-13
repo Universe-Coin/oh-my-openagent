@@ -48,9 +48,7 @@
       "label": "실시간 지표",
       "githubStars": "GitHub 스타",
       "totalDownloads": "총 다운로드",
-      "monthlyDownloads": "월간 다운로드",
-      "agents": "에이전트",
-      "agentCount": "11"
+      "monthlyDownloads": "월간 다운로드"
     },
     "secret": {
       "lead": "우리는 당신이 아래의 내용을 모르길 바랍니다.",
@@ -145,9 +143,9 @@
     },
     "dag": {
       "region": "워크플로우 그래프가 열린 OmO 데스크톱",
-      "windowTitle": "OmO — 시장 조사, 소스 12,000개",
+      "windowTitle": "OmO — 시장 조사 12k 소스",
       "threads": "스레드",
-      "thread1": "시장 조사, 소스 12,000개",
+      "thread1": "시장 조사 12k 소스",
       "thread2": "랭킹 모델 학습",
       "thread3": "투자자 덱 완성",
       "workflow": "워크플로우",
