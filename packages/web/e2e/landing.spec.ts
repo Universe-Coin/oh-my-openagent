@@ -117,6 +117,39 @@ test.describe("Landing Page", () => {
     expect(faintWords).toBe(0)
   })
 
+  test("runs independent Kibitzer loops and inserts a static nudge under reduced motion", async ({
+    page,
+  }) => {
+    await page.emulateMedia({ reducedMotion: "no-preference" })
+    await page.goto("/")
+    const stage = page.getByTestId("kibitzer-stage")
+    await stage.scrollIntoViewIfNeeded()
+    await expect(stage).toHaveAttribute("data-running", "true")
+    await expect(stage.locator("[data-kib-nudge]")).toHaveCount(1)
+    for (const column of ["side", "main"]) {
+      const names = await stage
+        .locator(`[data-kib-column="${column}"] *`)
+        .evaluateAll((nodes) => nodes.map((node) => getComputedStyle(node).animationName))
+      expect(names.some((name) => name !== "none")).toBe(true)
+    }
+
+    await page.emulateMedia({ reducedMotion: "reduce" })
+    const names = await stage
+      .locator("*")
+      .evaluateAll((nodes) =>
+        nodes.flatMap((node) => [
+          getComputedStyle(node).animationName,
+          getComputedStyle(node, "::before").animationName,
+          getComputedStyle(node, "::after").animationName,
+        ]),
+      )
+    expect(names.every((name) => name === "none")).toBe(true)
+    await expect(stage.locator("[data-kib-nudge]")).toBeVisible()
+    await expect(stage.locator("[data-kib-nudge]")).toHaveCSS("opacity", "1")
+    await expect(stage.locator(".kib-after")).toHaveCSS("opacity", "1")
+    await expect(stage.locator(".kib-before")).toBeHidden()
+  })
+
   test("renders the desktop DAG view in the hero with 10 nodes across 5 waves", async ({
     page,
   }) => {
