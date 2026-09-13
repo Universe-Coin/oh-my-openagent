@@ -721,3 +721,212 @@
     }
   }
 }
+
+@layer base {
+  /* §3 v3 — Korean falls back from the Latin sans to a gothic web font (Pretendard); headings get more weight */
+  [lang|="ko"] {
+    font-family:
+      var(--font-geist-sans), "Pretendard Variable", Pretendard, "Apple SD Gothic Neo",
+      "Noto Sans KR", ui-sans-serif, system-ui, sans-serif;
+  }
+  [lang|="ko"] :where(h1, h2) {
+    font-weight: 700;
+  }
+}
+
+@layer utilities {
+  /* §3 v3 — story prose: looser leading and a visible paragraph gap for CJK readers */
+  .prose-cjk {
+    text-wrap: pretty;
+  }
+  :where([lang|="ko"], [lang|="ja"], [lang|="zh"]) .prose-cjk {
+    line-height: 1.8;
+  }
+  .prose-cjk + .prose-cjk {
+    margin-top: 1.25em;
+  }
+
+  /* §10 v3 — story primitives. Each one has a reduced-motion final state below. */
+
+  /* Marquee: one row of chips scrolling on translateX; the track is duplicated by the component. */
+  .marquee {
+    display: flex;
+    overflow: hidden;
+    mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
+  }
+  .marquee-track {
+    display: flex;
+    flex: none;
+    gap: var(--space-3);
+    padding-inline-end: var(--space-3);
+    animation: marquee var(--marquee-dur, 40s) linear infinite;
+  }
+  .marquee-reverse .marquee-track {
+    animation-direction: reverse;
+  }
+  .marquee:hover .marquee-track {
+    animation-play-state: paused;
+  }
+  @keyframes marquee {
+    to {
+      transform: translateX(-100%);
+    }
+  }
+
+  /* Ticker: a vertical column of rows scrolling on translateY. */
+  .ticker {
+    overflow: hidden;
+    mask-image: linear-gradient(to bottom, transparent, #000 12%, #000 88%, transparent);
+  }
+  .ticker-track {
+    animation: ticker var(--ticker-dur, 30s) linear infinite;
+  }
+  .ticker:hover .ticker-track {
+    animation-play-state: paused;
+  }
+  @keyframes ticker {
+    to {
+      transform: translateY(-50%);
+    }
+  }
+
+  /* Lit text: words start faint and light up as .is-lit is added on scroll. */
+  .lit-word {
+    color: var(--text-faint);
+    transition: color var(--dur-reveal) var(--ease-out-quart);
+  }
+  .lit-word.is-lit {
+    color: var(--text-hi);
+  }
+
+  /* Kibitzer timeline: four steps cycle; --i is the step index, --kib-cycle the full loop. */
+  .kib-step {
+    --kib-cycle: 9s;
+    opacity: 0.35;
+    animation: kib-step var(--kib-cycle) var(--ease-standard) infinite;
+    animation-delay: calc(var(--i) * (var(--kib-cycle) / 4));
+  }
+  .kib-step::before {
+    content: "";
+    position: absolute;
+    inset-block: 0;
+    inset-inline-start: 0;
+    width: 2px;
+    background: var(--accent);
+    opacity: 0;
+    animation: kib-bar var(--kib-cycle) var(--ease-standard) infinite;
+    animation-delay: calc(var(--i) * (var(--kib-cycle) / 4));
+  }
+  .kib-nudge {
+    opacity: 0;
+    transform: translateX(-8px);
+    animation: kib-nudge var(--kib-cycle, 9s) var(--ease-out-quart) infinite;
+    animation-delay: calc(var(--kib-cycle, 9s) / 4);
+  }
+  @keyframes kib-step {
+    0%,
+    3% {
+      opacity: 0.35;
+    }
+    6%,
+    24% {
+      opacity: 1;
+    }
+    30%,
+    100% {
+      opacity: 0.55;
+    }
+  }
+  @keyframes kib-bar {
+    0%,
+    3% {
+      opacity: 0;
+    }
+    6%,
+    24% {
+      opacity: 1;
+    }
+    30%,
+    100% {
+      opacity: 0;
+    }
+  }
+  @keyframes kib-nudge {
+    0%,
+    4% {
+      opacity: 0;
+      transform: translateX(-8px);
+    }
+    8%,
+    40% {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    46%,
+    100% {
+      opacity: 0;
+      transform: translateX(-8px);
+    }
+  }
+
+  /* Rotating word: a clipped line-height box; the track steps through --count words. */
+  .rotate-word {
+    display: inline-grid;
+    overflow: hidden;
+    vertical-align: bottom;
+    height: 1.1em;
+    line-height: 1.1;
+  }
+  .rotate-word-track {
+    display: grid;
+    animation: rotate-word calc(var(--count) * 1.6s) steps(var(--count)) infinite;
+  }
+  .rotate-word-track > span {
+    height: 1.1em;
+    line-height: 1.1;
+    white-space: nowrap;
+  }
+  @keyframes rotate-word {
+    to {
+      transform: translateY(-100%);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .marquee,
+    .ticker {
+      mask-image: none;
+      overflow: visible;
+    }
+    .marquee-track,
+    .ticker-track {
+      animation: none;
+      flex-wrap: wrap;
+    }
+    .marquee-track[aria-hidden="true"],
+    .ticker-track > [aria-hidden="true"] {
+      display: none;
+    }
+    .lit-word {
+      color: var(--text-hi);
+      transition: none;
+    }
+    .kib-step,
+    .kib-step::before,
+    .kib-nudge {
+      animation: none;
+      opacity: 1;
+      transform: none;
+    }
+    .rotate-word {
+      height: auto;
+      overflow: visible;
+    }
+    .rotate-word-track {
+      animation: none;
+    }
+    .rotate-word-track > span:not(:first-child) {
+      display: none;
+    }
+  }
+}
