@@ -292,20 +292,21 @@ The GitHub one-liner calls the user "the master of graph engineering". The focal
 - **ultrawork**: prompt line with the keyword as a `--accent-16` mark + three revealed steps. No product jargon in the copy.
 - **multi-model**: two `Marquee` rows of tuned profile chips (opposite directions, 36s / 44s, pause on hover). The chip list is data (`story-data.ts`) and never names families outside Claude / GPT / Kimi / Grok / GLM / DeepSeek.
 - **mass-ulw**: the existing desktop-app DAG (`dag/`) on a research → dataset → model → deck scenario (`scenario-data.ts`).
-- **kibitzer**: a two-column stage; the sidecar column reads memory, the main column steps through a plan; `.kib-step` cycles four steps over 9s, `.kib-nudge` shows the nudge chip during step 2.
+- **kibitzer**: two concurrent loops, a narrow inexpensive memory-watching sidecar and a larger expensive frontier agent. Independent active markers run on `--kib-watch-cycle: 4.5s` (three beats) and `--kib-main-cycle: 14s` (four beats); the main turn counter advances on each animation iteration. A `--kib-cycle: 14s` story sends one nudge from memory across the gutter into a reserved slot between acting and verifying, replacing the skipped migration test with running it first at 50% of the story. The loops continue throughout. One IntersectionObserver pauses the stage offscreen. Below md, the sidecar becomes a compact top strip and the nudge travels vertically. Reduced motion shows the inserted nudge and corrected step, without animation.
+  - Stage geometry: desktop columns `minmax(0, 1fr) minmax(0, 2fr)`, gap `--space-12`, padding `--space-5`; mobile gap `--space-8`, padding `--space-4`. Ruled loop rows use `--space-12` minimum height, insertion slot `--space-24` minimum height. Nudge starts at `translateX(calc(-50% - var(--space-12))) scale(.5)` on desktop; mobile starts at `translateY(calc(-1 * (var(--space-40) + var(--space-24)))) scale(.8)`. Transform origin is left center; 0–30% hidden at source, 32–38% produced, 38–50% in flight, 50–94% inserted, 98–100% reset. Text stays full opacity except hidden/replaced story states; only the active row changes color. All other dimensions, type, colors and rules reuse §§2–6.
 - **skills**: a vertical `Ticker` of `name · blurb` rows (30s, pause on hover) next to the copy.
 - **crafted**: sticky copy column + a single-column rise-up list (`Reveal` with `--index` stagger); the docs link is the only CTA.
 - **platforms**: title with a `RotatingWord` (13 platforms, 1.6s per word, `steps()`), then every platform once as a `Chip`, revealed with stagger, and a footnote-style "coming soon" line under the list.
 
 ### §10 primitives (`components/landing/story-primitives.tsx`, `lit-text.tsx`; CSS in `design-system.css` §10)
 
-| Primitive      | Motion                                                       | Reduced motion                       |
-| -------------- | ------------------------------------------------------------ | ------------------------------------ |
-| `Marquee`      | `translateX(-100%)` linear, duplicated track, pause on hover | static wrapped row, duplicate hidden |
-| `Ticker`       | `translateY(-50%)` linear, duplicated list, pause on hover   | static list, duplicate hidden        |
-| `LitText`      | scroll progress → `.is-lit` per word, 600ms color transition | all words lit                        |
-| `.kib-step`    | 9s keyframed opacity + 2px `--accent` bar per step           | every step at full opacity, no bar   |
-| `RotatingWord` | `steps(n)` vertical track, 1.6s per word, 1.1em clip         | first word only                      |
+| Primitive      | Motion                                                                                                                  | Reduced motion                                                        |
+| -------------- | ----------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------- |
+| `Marquee`      | `translateX(-100%)` linear, duplicated track, pause on hover                                                            | static wrapped row, duplicate hidden                                  |
+| `Ticker`       | `translateY(-50%)` linear, duplicated list, pause on hover                                                              | static list, duplicate hidden                                         |
+| `LitText`      | scroll progress → `.is-lit` per word, 600ms color transition                                                            | all words lit                                                         |
+| `.kib-stage`   | Independent 4.5s watch / 14s main loops; 14s traveling nudge inserts before verification; iteration-driven turn counter | both loops visible, nudge inserted, corrected next step, no animation |
+| `RotatingWord` | `steps(n)` vertical track, 1.6s per word, 1.1em clip                                                                    | first word only                                                       |
 
 All five are CSS keyframes or one IntersectionObserver; no scroll listeners, no motion library (§6 rule unchanged).
 
