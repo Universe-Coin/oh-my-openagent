@@ -55,6 +55,7 @@ test.describe("Hero Stats", () => {
       await route.fulfill({
         contentType: "application/json",
         body: JSON.stringify({
+          source: "live",
           stars: "0",
           totalDownloads: "1M+",
           monthlyDownloads: "580k+",
@@ -71,6 +72,31 @@ test.describe("Hero Stats", () => {
     // then
     await expect(page.getByText("0 GitHub Stars")).toBeHidden()
     await expect(page.locator("text=/[\\d.]+k GitHub Stars/")).toBeVisible()
+  })
+
+  test("ignores a fallback payload from live stats", async ({ page }) => {
+    // given
+    await page.route("**/api/stats", async (route) => {
+      await route.fulfill({
+        contentType: "application/json",
+        body: JSON.stringify({
+          source: "fallback",
+          stars: "1",
+          totalDownloads: "1",
+          monthlyDownloads: "1",
+          weeklyDownloads: "1",
+        }),
+      })
+    })
+
+    // when
+    const statsResponse = page.waitForResponse((response) => response.url().includes("/api/stats"))
+    await page.goto("/")
+    await statsResponse
+
+    // then
+    await expect(page.getByText("1 Total Downloads")).toBeHidden()
+    await expect(page.locator("text=/[\\d.]+[kM]\\+? Total Downloads/")).toBeVisible()
   })
 
   test("displays total download count", async ({ page }) => {
