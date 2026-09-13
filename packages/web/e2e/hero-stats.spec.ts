@@ -12,7 +12,7 @@ test.describe("Hero Stats", () => {
 
     // then
     await expect(tagline).toBeVisible()
-    await expect(tagline).toHaveText(en.landing.hero.subcopy)
+    await expect(tagline).toHaveText(en.landing.hero.subcopy.replace(/\s+/g, " "))
   })
 
   test("serves a generated Open Graph image", async ({ request }) => {

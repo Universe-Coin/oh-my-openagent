@@ -33,7 +33,7 @@
     "hero": {
       "title": "Your tool for real work.",
       "titleHighlight": "But it's an agent.",
-      "subcopy": "把你的 token 变成现实世界里有价值的成果。需要上万个来源的研究、一看就懂的整洁演示、牵涉多种背景的公司事务、实验、后端、前端、编程。你想做的任何事。",
+      "subcopy": "把你的 token 变成真正有价值的成果。\n上万个来源的研究。一看就懂的演示。\n公司事务、实验、后端、前端、编程。\n你想做的任何事。",
       "getStarted": "开始使用",
       "readManifesto": "阅读宣言",
       "installLabel": "一条命令，一个工具",
