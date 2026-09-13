@@ -115,6 +115,20 @@ export default function RootLayout({ children }: { readonly children: ReactNode 
       suppressHydrationWarning
     >
       <body className="flex min-h-screen flex-col bg-[#0a0a0a] text-[#ededed] antialiased">
+        {process.env.NODE_ENV === "development" && (
+          <>
+            <Script
+              src="//unpkg.com/react-grab/dist/index.global.js"
+              crossOrigin="anonymous"
+              strategy="beforeInteractive"
+            />
+            <Script
+              src="//unpkg.com/react-scan/dist/auto.global.js"
+              crossOrigin="anonymous"
+              strategy="beforeInteractive"
+            />
+          </>
+        )}
         <Script id="google-analytics-loader" strategy="lazyOnload">
           {`if (typeof window !== 'undefined' && window.location.hostname === '${gaTrackedDomain}') {
   var s = document.createElement('script');
