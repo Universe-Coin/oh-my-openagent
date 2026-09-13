@@ -84,7 +84,7 @@ export async function PrinciplesSection(): Promise<JSX.Element> {
                     <RoutingTable />
                   ) : key === "continuity" ? (
                     <pre className="border-line bg-code-bg text-code-fg overflow-x-auto border p-4 font-mono text-sm leading-[1.55]">
-                      {t("boulderEvidence")}
+                      {t.raw("boulderEvidence")}
                     </pre>
                   ) : undefined
                 }
